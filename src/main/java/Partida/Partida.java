@@ -20,6 +20,16 @@ public class Partida {
         this.timeDeFora = timeDeFora;
     }
 
+    /**
+     * Simula a jogada atual, i.e. o ataque de um time contra outro
+     * O atacante da jogada a ser simulada tem que passar por dois checks pra fazer um gol
+     * O primeiro, contra o defensor. Compara-se a nota dos dois, caso seja maior o atacante chutara ao gol, caso menor, houve um rouboDeBola.
+     * O segundo, contra o goleiro. Compara-se a nota dos dois, caso seja maior o atacante marcou um gol, caso menor, houve uma defesa.
+     * @param  atacante  O atacante do time atacando
+     * @param  defensor O defensor do time defendendo
+     * @param  goleiro O goleiro do time defendendo
+     * @return int numero que significa o tipo do resultado da jogada. i.e. 1 == gol, 2 == defesa, 3 == rouboDeBola
+     */
     public static int simulaJogada(Atacante atacante, Defensor defensor, Goleiro goleiro) { // Static soh pra poder testar sem criar um Time
         if (atacante.getNota() > defensor.getNota()) {
             if (atacante.getNota() > goleiro.getNota()) {
@@ -57,6 +67,13 @@ public class Partida {
         System.out.println("-------------------------------------");
     }
 
+    /**
+     * Simula a partida atual.
+     * Dura 90 iteracoes (this.duracao), em cada iteracao cada time tem uma change aleatoria de atacar
+     * Apos o final da duracao, computa-se o resultado final e a
+     * atribui, deste resultado, a pontuacao da vitoria ou empate e a quantidade de gols aos times que disputaram a partida.
+     * @return Time time que venceu a partida
+     */
     public Time simulaPartida() {
         List<Atacante> atacantesTimeDaCasa = timeDaCasa.getAtacantes();
         List<Atacante> atacantesTimeDeFora = timeDeFora.getAtacantes();

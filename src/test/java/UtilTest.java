@@ -59,4 +59,21 @@ public class UtilTest extends TestCase {
 
         assertEquals(10, time.getAtacantes().size() + time.getDefensores().size());
     }
+
+    public void test_classificarTimesPorNota() {
+        List<Time> timesDesordenado = new ArrayList<>();
+        timesDesordenado.add(Util.criaTimeAleatorio());
+        timesDesordenado.add(Util.criaTimeAleatorio());
+        timesDesordenado.add(Util.criaTimeAleatorio());
+
+        List<Time> timesOrdenado = Util.classificarTimesPorNota(timesDesordenado);
+        int notaTimePos0 = timesOrdenado.get(0).getSomaNotaJogadores();
+        int notaTimePos1 = timesOrdenado.get(1).getSomaNotaJogadores();
+        int notaTimePos2 = timesOrdenado.get(2).getSomaNotaJogadores();
+        assertTrue( // Assert ordenacao descendente
+    (notaTimePos0 > notaTimePos1 && notaTimePos0 > notaTimePos2)
+            && (notaTimePos1 < notaTimePos0 && notaTimePos1 > notaTimePos2)
+            && (notaTimePos2 < notaTimePos0 && notaTimePos2 < notaTimePos1)
+        );
+    }
 }

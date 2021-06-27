@@ -4,8 +4,7 @@ import Jogador.Atacante;
 import Jogador.Defensor;
 import Jogador.Goleiro;
 import Time.Time;
-
-import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ThreadLocalRandom;
@@ -71,14 +70,9 @@ public class Util {
             getRandomIntInRange(1, 100)
         );
     }
-    
-    // TODO
-    public static List<Time> classificarTimesPorNota(List<Time> times) {
-        return times;
-    }
 
-    // TODO
-    public static List<Time> classificarTimesPorEstatistica(List<Time> times) {
+    public static List<Time> classificarTimesPorNota(List<Time> times) {
+        times.sort(Comparator.comparing(Time::getSomaNotaJogadores).reversed());
         return times;
     }
 
