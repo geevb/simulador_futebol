@@ -9,15 +9,17 @@ public class Time {
     private List<Defensor> defensores;
     private Goleiro goleiro;
     private String nome;
+    private int pontos = 0;
+    private int gols = 0;
 
-    public Time (String nome) {
+    public Time(String nome) {
         this.atacantes = new ArrayList<>();
         this.defensores = new ArrayList<>();
         this.goleiro = null;
         this.nome = nome;
     }
 
-    public Time (List<Atacante> atacantes, List<Defensor> defensores, Goleiro goleiro, String nome) {
+    public Time(List<Atacante> atacantes, List<Defensor> defensores, Goleiro goleiro, String nome) {
        this.atacantes = atacantes;
        this.defensores = defensores;
        this.goleiro = goleiro;
@@ -94,5 +96,33 @@ public class Time {
         if (numCamisaJaUtilizado(goleiro)) return null;
         this.goleiro = goleiro;
         return this.goleiro;
+    }
+
+    public int getSomaNotaJogadores() {
+        return getJogadores().stream().mapToInt(j -> j.getNota()).sum();
+    }
+
+    public int addPontos(String tipo) {
+        if (tipo.equals("vitoria")) pontos += 3;
+        if (tipo.equals("empate")) pontos += 1;
+
+        return pontos;
+    }
+
+    public void addGols(int numGols) {
+        this.gols += numGols;
+    }
+
+    public int getGols() {
+        return gols;
+    }
+
+    public int getPontos() {
+        return pontos;
+    }
+
+    @Override
+    public String toString() {
+        return String.format("Time: %s,\nPontuacao: %s,\nGols: %s,\nArtilheiro: %s", getNome(), getPontos(), getGols(), getArtilheiro());
     }
 }

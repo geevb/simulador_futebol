@@ -59,4 +59,33 @@ public class TimeTest extends TestCase {
 
         assertTrue(time.getJogadores().size() < nInicialJogadores);
     }
+
+    public void test_getSomaNotaJogadores() {
+        Time time = new Time("Timao");
+        assertEquals(0, time.getSomaNotaJogadores());
+
+        Atacante atc = Util.criaAtacanteAleatorio();
+        Defensor def = Util.criaDefensorAleatorio();
+        Goleiro gol = Util.criaGoleiroAleatorio();
+
+        time.adicionaAtacante(atc);
+        time.adicionaDefensor(def);
+        time.adicionaGoleiro(gol);
+
+        assertEquals(
+            (atc.getNota() + def.getNota() + gol.getNota()),
+            time.getSomaNotaJogadores()
+        );
+    }
+
+    public void test_addPontos() {
+        Time time = Util.criaTimeAleatorio();
+        assertEquals(0, time.getPontos());
+
+        time.addPontos("vitoria");
+        assertEquals(3, time.getPontos());
+
+        time.addPontos("empate");
+        assertEquals(4, time.getPontos());
+    }
 }

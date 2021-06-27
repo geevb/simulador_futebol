@@ -71,5 +71,15 @@ public class Util {
             getRandomIntInRange(1, 100)
         );
     }
+    
+    // TODO
+    public static List<Time> classificarTimesPorNota(List<Time> times) {
+        return times;
+    }
+
+    // TODO
+    public static List<Time> classificarTimesPorEstatistica(List<Time> times) {
+        return times;
+    }
 
 }

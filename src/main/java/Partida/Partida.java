@@ -68,7 +68,7 @@ public class Partida {
         Goleiro goleiroTimeDeFora = timeDeFora.getGoleiro();
 
         for (int i = 0; i < getDuracao(); i++) {
-            if (Math.random() < 0.5) { // Ataque time 1 contra time 2
+            if (Math.random() < 0.5) { //  Ataque time 1 contra time 2
                 int nJogada = simulaJogada(
                     Util.getRandomAtacante(atacantesTimeDaCasa),
                     Util.getRandomDefensor(defensoresTimeDeFora),
@@ -86,6 +86,15 @@ public class Partida {
         }
 
         Time vencedor = verificaVencedor(resultadoTimeDaCasa, resultadoTimeDeFora);
+        if (vencedor == null) {
+            timeDaCasa.addPontos("empate");
+            timeDeFora.addPontos("empate");
+        } else {
+            vencedor.addPontos("vitoria");
+        }
+
+        timeDaCasa.addGols(resultadoTimeDaCasa.getGols());
+        timeDeFora.addGols(resultadoTimeDeFora.getGols());
         printaResultadoPartida(vencedor);
         return vencedor;
     }

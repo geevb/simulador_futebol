@@ -22,8 +22,11 @@ public class Main {
         partida = new Partida(time2, time3);
         partida.simulaPartida();
 
-        System.out.println("Artilheiro " + time1.getNome() + ": " + time1.getArtilheiro());
-        System.out.println("Artilheiro " + time2.getNome() + ": " + time2.getArtilheiro());
-        System.out.println("Artilheiro " + time3.getNome() + ": " + time3.getArtilheiro());
+        System.out.println(time1);
+        System.out.println("-----------------");
+        System.out.println(time2);
+        System.out.println("-----------------");
+        System.out.println(time3);
+        System.out.println("-----------------");
     }
 }
