@@ -58,10 +58,14 @@ public class Time {
         boolean removeu;
 
         removeu = atacantes.removeIf(atq -> atq.getNumCamisa() == numCamisa);
-        if (!removeu) defensores.removeIf(def -> def.getNumCamisa() == numCamisa);
-        if (!removeu && goleiro.getNumCamisa() == numCamisa) this.goleiro = null;
+        if (!removeu) { removeu = defensores.removeIf(def -> def.getNumCamisa() == numCamisa); }
+        if (!removeu && goleiro.getNumCamisa() == numCamisa) { this.goleiro = null; removeu = true; }
 
         return removeu;
+    }
+
+    public boolean removeJogador(Jogador jogador) {
+        return removeJogador(jogador.getNumCamisa());
     }
 
     public boolean numCamisaJaUtilizado(int numCamisa) {
@@ -69,7 +73,7 @@ public class Time {
     }
 
     public boolean numCamisaJaUtilizado(Jogador jogador) {
-        return getJogadores().stream().anyMatch(j -> j.getNumCamisa() == jogador.getNumCamisa());
+        return numCamisaJaUtilizado(jogador.getNumCamisa());
     }
 
     public List<Jogador> getJogadores() {

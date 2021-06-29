@@ -51,13 +51,22 @@ public class TimeTest extends TestCase {
         int nInicialJogadores = time.getJogadores().size();
         assertTrue(nInicialJogadores > 0);
 
+        // Testa remover por numero de camisa
         assertTrue(
-            time.removeJogador( // Remover jogador retorna true
+            time.removeJogador(
                 time.getDefensores().get(0).getNumCamisa() // Por ter sido criado aleatoriamente, usa o numero da camiseta de alguem que ja existe
             )
         );
+        assertTrue(time.getJogadores().size() < nInicialJogadores); // Numero atual de jogadores tem que ser menor que o inicial
+        assertFalse(time.removeJogador(99999)); // Tenta tirar jogador com numero inexistente
 
-        assertTrue(time.getJogadores().size() < nInicialJogadores);
+        // Testa remover por Jogador
+        assertTrue(
+            time.removeJogador(
+                time.getAtacantes().get(0)
+            )
+        );
+        assertFalse(time.removeJogador(new Jogador("Joaozinho", 999999))); // Tenta tirar jogador com numero inexistente
     }
 
     public void test_getSomaNotaJogadores() {
@@ -86,6 +95,9 @@ public class TimeTest extends TestCase {
         assertEquals(3, time.getPontos());
 
         time.addPontos("empate");
+        assertEquals(4, time.getPontos());
+
+        time.addPontos("tipoInvalido"); // Se nao passar um tipo correto, nao mexe na pontuacao
         assertEquals(4, time.getPontos());
     }
 }

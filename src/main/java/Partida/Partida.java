@@ -60,7 +60,7 @@ public class Partida {
     }
 
     public void printaResultadoPartida(Time timeVencedor) {
-        System.out.println(">>> Resultado <<<");
+        System.out.println(">>> Resultado da Partida <<<");
         System.out.println("Time (" + timeDaCasa.getNome() + "): " + resultadoTimeDaCasa);
         System.out.println("Time (" + timeDeFora.getNome() + "): " + resultadoTimeDeFora);
         System.out.println("Resultado: " + (timeVencedor == null ? "Empate" : timeVencedor.getNome() + " venceu"));

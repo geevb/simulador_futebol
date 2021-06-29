@@ -4,6 +4,10 @@ import Partida.Partida;
 import Time.Time;
 import Util.Util;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
         Time time1 = Util.criaTimeAleatorio();
@@ -28,5 +32,9 @@ public class Main {
         System.out.println("-----------------");
         System.out.println(time3);
         System.out.println("-----------------");
+
+        System.out.println(">>>>> Time Vencedor do torneio <<<<<");
+        List<Time> timesTorneio = new ArrayList<>(Arrays.asList(time1, time2, time3));
+        System.out.println(Util.classificarTimesPorPontos(timesTorneio).get(0));
     }
 }

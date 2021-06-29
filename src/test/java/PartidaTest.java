@@ -67,5 +67,12 @@ public class PartidaTest extends TestCase {
             || timeVencedor.getNome().equals(time1.getNome())
             || timeVencedor.getNome().equals(time2.getNome())
         );
+
+        if (timeVencedor == null) {
+            assertEquals(time1.getPontos(), 1);
+            assertEquals(time2.getPontos(), 1);
+        } else {
+            assertEquals(timeVencedor.getPontos(), 3);
+        }
     }
 }

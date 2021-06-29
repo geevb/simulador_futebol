@@ -76,4 +76,9 @@ public class Util {
         return times;
     }
 
+    public static List<Time> classificarTimesPorPontos(List<Time> times) {
+        times.sort(Comparator.comparing(Time::getPontos).reversed());
+        return times;
+    }
+
 }

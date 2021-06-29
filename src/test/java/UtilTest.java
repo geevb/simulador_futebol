@@ -1,5 +1,6 @@
 import Jogador.Atacante;
 import Jogador.Defensor;
+import Partida.Partida;
 import Time.Time;
 import Util.Util;
 import junit.framework.Test;
@@ -7,6 +8,7 @@ import junit.framework.TestCase;
 import junit.framework.TestSuite;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 public class UtilTest extends TestCase {
@@ -74,6 +76,34 @@ public class UtilTest extends TestCase {
     (notaTimePos0 > notaTimePos1 && notaTimePos0 > notaTimePos2)
             && (notaTimePos1 < notaTimePos0 && notaTimePos1 > notaTimePos2)
             && (notaTimePos2 < notaTimePos0 && notaTimePos2 < notaTimePos1)
+        );
+    }
+
+    public void test_classificarTimesPorPontos() {
+        Time time1 = Util.criaTimeAleatorio();
+        Time time2 = Util.criaTimeAleatorio();
+        Time time3 = Util.criaTimeAleatorio();
+
+        Partida partida = new Partida(time1, time2);
+        partida.simulaPartida();
+
+        // Time 1 vs Time 3
+        partida = new Partida(time1, time3);
+        partida.simulaPartida();
+
+        // Time 2 vs Time 3
+        partida = new Partida(time2, time3);
+        partida.simulaPartida();
+
+        List<Time> timesTorneioDesordenado = new ArrayList<>(Arrays.asList(time1, time2, time3));
+        List<Time> timesTorneioOrdenado = Util.classificarTimesPorPontos(timesTorneioDesordenado);
+
+        Time timeVencedor = timesTorneioOrdenado.get(0);
+        Time segundoColocado = timesTorneioOrdenado.get(1);
+        Time terceiroColocado = timesTorneioOrdenado.get(1);
+        assertTrue(
+    timeVencedor.getPontos() >= segundoColocado.getPontos()
+            && segundoColocado.getPontos() >= terceiroColocado.getPontos()
         );
     }
 }
