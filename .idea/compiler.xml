@@ -6,7 +6,7 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="timefutebol" />
+        <module name="T6_GetulioBeninca_GustavoAndrade_MateusRech" />
       </profile>
     </annotationProcessing>
   </component>
