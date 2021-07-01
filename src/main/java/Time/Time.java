@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Time {
+    private final int bonusNotaJogadoresJogandoEmCasa = 50;
     private List<Atacante> atacantes;
     private List<Defensor> defensores;
     private Goleiro goleiro;
@@ -123,6 +124,10 @@ public class Time {
 
     public int getPontos() {
         return pontos;
+    }
+
+    public int getBonusNotaJogadoresJogandoEmCasa() {
+        return bonusNotaJogadoresJogandoEmCasa;
     }
 
     @Override

@@ -18,6 +18,10 @@ public class Jogador {
         return this.nota;
     }
 
+    public void setNota(int nota) { // Usado apenas nos testes p/ facilitar...
+        this.nota = nota;
+    }
+
     public String getNome() { return this.nome; }
 
     public int getNumCamisa() { return this.numCamisa; }
