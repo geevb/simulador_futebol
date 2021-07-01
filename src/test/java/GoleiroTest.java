@@ -13,7 +13,7 @@ public class GoleiroTest extends TestCase {
     }
 
     public void test_calculaNota() {
-        Goleiro goleiro = new Goleiro("Joaozinho", 999, 180, 75);
-        assertEquals(450, goleiro.getNota()); // calculaNota eh protected, mas da pra acessar o valor atraves do valor final do atrib. nota
+        Goleiro goleiro = new Goleiro("Joaozinho", 999, 210, 1);
+        assertEquals(406, goleiro.getNota()); // Reflexo 1 * 6 + 100 * 4 da normalizacao
     }
 }
