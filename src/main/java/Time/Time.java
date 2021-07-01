@@ -86,12 +86,14 @@ public class Time {
     }
 
     public List<Atacante> adicionaAtacante(Atacante atacante) {
+        if (getAtacantes().size() >= 2) return null;
         if (numCamisaJaUtilizado(atacante)) return null;
         atacantes.add(atacante);
         return atacantes;
     }
 
     public List<Defensor> adicionaDefensor(Defensor defensor) {
+        if (getDefensores().size() >= 2) return null;
         if (numCamisaJaUtilizado(defensor)) return null;
         defensores.add(defensor);
         return defensores;

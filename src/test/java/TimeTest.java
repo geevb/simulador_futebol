@@ -100,4 +100,38 @@ public class TimeTest extends TestCase {
         time.addPontos("tipoInvalido"); // Se nao passar um tipo correto, nao mexe na pontuacao
         assertEquals(4, time.getPontos());
     }
+
+    public void test_adicionaAtacante() {
+        Time time = new Time("timao");
+
+        // Adiciona 2 atacantes, ok
+        assertNotNull(time.adicionaAtacante(Util.criaAtacanteAleatorio()));
+        assertNotNull(time.adicionaAtacante(Util.criaAtacanteAleatorio()));
+
+        // Tenta adicionar terceiro atacante, nao ok
+        assertNull(time.adicionaAtacante(Util.criaAtacanteAleatorio()));
+    }
+
+    public void test_adicionaGoleiro() {
+        Time time = new Time("timao");
+        Goleiro golAtual = Util.criaGoleiroAleatorio();
+
+        assertEquals(golAtual, time.adicionaGoleiro(golAtual)); // Adiciona goleiro, ok
+        assertEquals(golAtual, time.getGoleiro());
+
+        Goleiro golNovo = Util.criaGoleiroAleatorio();
+        assertEquals(golNovo, time.adicionaGoleiro(golNovo)); // Adiciona novo goleiro, antigo foi substituido
+        assertEquals(golNovo, time.getGoleiro());
+    }
+
+    public void test_adicionaDefensor() {
+        Time time = new Time("timao");
+
+        // Adiciona 2 defensores, ok
+        assertNotNull(time.adicionaDefensor(Util.criaDefensorAleatorio()));
+        assertNotNull(time.adicionaDefensor(Util.criaDefensorAleatorio()));
+
+        // Tenta adicionar terceiro defensor, nao ok
+        assertNull(time.adicionaDefensor(Util.criaDefensorAleatorio()));
+    }
 }

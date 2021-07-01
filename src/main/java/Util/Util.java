@@ -28,8 +28,8 @@ public class Util {
     }
 
     public static Time criaTimeAleatorio() {
-        int numAtacantes = getRandomIntInRange(1, 9);
-        int numDefensores = 10 - numAtacantes; // Se atacantes = 3, defensores sera = 7.
+        int numAtacantes = 2;
+        int numDefensores = 2;
 
         Time time = new Time(faker.country().name());
         for (int i = 0; i < numAtacantes; i++) {

@@ -56,10 +56,8 @@ public class UtilTest extends TestCase {
         assertNotNull(time.getDefensores());
         assertNotNull(time.getGoleiro());
 
-        assertTrue(time.getAtacantes().size() > 0 && time.getAtacantes().size() < 10);
-        assertTrue(time.getDefensores().size() > 0 && time.getDefensores().size() < 10);
-
-        assertEquals(10, time.getAtacantes().size() + time.getDefensores().size());
+        assertEquals(2, time.getAtacantes().size());
+        assertEquals(2, time.getDefensores().size());
     }
 
     public void test_classificarTimesPorNota() {
